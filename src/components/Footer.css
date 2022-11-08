@@ -1,0 +1,18 @@
+
+.body{
+ position: relative;
+ min-height: 100vh;
+
+}
+.foot {
+    position: absolute;
+    
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-image: url("/public/footer.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
