@@ -13,7 +13,7 @@ function LoginForm() {
    
       localStorage.setItem('token', result.data.token)
       localStorage.setItem('User', result.data.name1)
-
+      alert(result.data.message)
       navigate(`/home/${result.data.name1}`)
 
     }).catch((err) => {

@@ -8,9 +8,9 @@ function RegisterForm() {
   //function call for registering new user
   function register(values) {
     axios.post('http://localhost:3010/register', values).then(result => {
-      console.log(result);
+      alert(result.data.message);
     }).catch(err => {
-      console.log(err);
+      alert(err.response.data.message);
     })
   }
 
@@ -55,7 +55,7 @@ function RegisterForm() {
             <div >
               <label htmlFor='pass'> Password </label>
               <input className='form-control' type="password" id='pass' name='password' onChange={formik.handleChange} value={formik.values.password} onBlur={formik.handleBlur}></input>
-              {formik.touched.password && formik.errors.name ? (<div style={{ color: "red", textAlign: "center" }}>{formik.errors.name}</div>) : null}
+              {formik.touched.password && formik.errors.password ? (<div style={{ color: "red", textAlign: "center" }}>{formik.errors.name}</div>) : null}
             </div>
             <div className='d-flex'>
               <button type='submit' className='btn btn-success mt-2 bt'>Register</button>

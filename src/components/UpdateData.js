@@ -3,35 +3,41 @@ import Header from './Header'
 import { Row, Col } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
 
 function UpdateData() {
 
     const location = useLocation()
     const body = location.state
-    console.log(body);
+   
 
 
     useEffect(() => {
+        console.log(body);
         axios.post('http://localhost:3010/updateData', body).then((result) => {
             if (result) {
-                
+                console.log(result.data.x.empName);
+                  
             }
         })
     }, [])
-    const updateemployee = (values) => {
-        axios.post('http://localhost:3010/updateEmployee', values)
-    }
+
+    // const updateemployee = (values) => {
+    //     axios.put(`http://localhost:3010/updateEmployee/employer/${body.employer}/employee/${body.employee}`, values)
+    // }
 
     const formik = useFormik({
-        initialValues: {
+        initialValues:{
             empName: '',
             empMail: '',
             empPhone: '',
             department: 'a',
             designation: 'a'
         },
+        onSubmit: values=>{
+            //updateemployee(values)
+        }
        
     })
 
@@ -80,7 +86,7 @@ function UpdateData() {
                                         </select>
                                     </div></Col>
                             </Row>
-                            <div className='d-flex p-2'><button className='btn btn-success ms-auto'>Update</button></div>
+                            <div className='d-flex p-2'><button type='submit' className='btn btn-success ms-auto'>Update</button></div>
                         </form>
                     </Col>
                 </Row>

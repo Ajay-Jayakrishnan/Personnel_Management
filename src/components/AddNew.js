@@ -11,6 +11,7 @@ function AddNew() {
     function addemployee(values) {
         axios.post('http://localhost:3010/addemployee/' + id, values).then(result => {
             console.log(result);
+            alert(result.data.message)
         }).catch(err => {
             console.log(err);
         })
